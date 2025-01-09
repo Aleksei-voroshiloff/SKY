@@ -4,9 +4,36 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar({ logoutHandler, user, handleItemClick, activeItem }) {
   return (
-    <Menu pointing inverted>
-     
-      {user.data && (
+    <Menu pointing>
+      <Menu.Item header>
+        <img
+          src="/logo.svg" // Укажите путь к вашему логотипу
+          style={{ height: '40px', marginRight: '10px' }} // Установите нужные стили
+        />
+        SKI
+      </Menu.Item>
+      <MenuItem
+        as={Link}
+        to="/"
+        name="Home"
+        active={activeItem === 'Home'}
+        onClick={() => handleItemClick('Home')}
+      />
+      <MenuItem
+        as={Link}
+        to="/redaction"
+        name="Редактировать трассу"
+        active={activeItem === 'Редактировать трассу'}
+        onClick={() => handleItemClick('Редактировать трассу')}
+      />
+      <MenuItem
+        as={Link}
+        to="/addtrassa"
+        name="Добавить трассу"
+        active={activeItem === 'Добавить трассу'}
+        onClick={() => handleItemClick('Добавить трассу')}
+      />
+      {/* {user.data && (
         <MenuItem
           as={Link}
           to="/home"
@@ -54,7 +81,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
             <MenuItem name="Выход" onClick={logoutHandler} />
           </>
         )}
-      </Menu.Menu>
+      </Menu.Menu> */}
     </Menu>
   );
 }
