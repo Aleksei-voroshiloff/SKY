@@ -3,6 +3,7 @@ import { Menu, MenuItem } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar({ logoutHandler, user, handleItemClick, activeItem }) {
+  console.log(user);
   return (
     <Menu pointing>
       <Menu.Item header>
@@ -25,24 +26,24 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
 
       <Menu.Menu position="right">
         {!user.data && (
-          <MenuItem
-            as={Link}
-            to="/auth/signin"
-            name="Вход"
-            active={activeItem === 'Вход'}
-            onClick={() => handleItemClick('Вход')}
-          />
+          <>
+            <MenuItem
+              as={Link}
+              to="/signin"
+              name="Вход"
+              active={activeItem === 'Вход'}
+              onClick={() => handleItemClick('Вход')}
+            />
+            <MenuItem
+              as={Link}
+              to="/signup"
+              name="Регистрация"
+              active={activeItem === 'Регистрация'}
+              onClick={() => handleItemClick('Регистрация')}
+            />
+          </>
         )}
-        {!user.data && (
-          <MenuItem
-            as={Link}
-            to="/auth/signup"
-            name="Регистрация"
-            active={activeItem === 'Регистрация'}
-            onClick={() => handleItemClick('Регистрация')}
-          />
-        )}
-        {user.data && (
+        {user?.data?.name === 'admin' && (
           <>
             <MenuItem
               as={Link}
@@ -53,14 +54,19 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
             />
             <MenuItem
               as={Link}
-              to="/add"
+              to="/addTrassa"
               name="Добавить трассу"
               active={activeItem === 'Добавить трассу'}
               onClick={() => handleItemClick('Добавить трассу')}
             />
-            <MenuItem name="Выход" onClick={logoutHandler} />
           </>
         )}
+       {user.data &&
+       <>
+         <MenuItem name={user.data.name}  />
+        <MenuItem name="Выход" onClick={logoutHandler} />
+       </>
+        }
       </Menu.Menu>
     </Menu>
   );

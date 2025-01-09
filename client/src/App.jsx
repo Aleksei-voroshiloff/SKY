@@ -1,55 +1,76 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout';
-// import MainPage from './components/pages/StartPage';
-import AddPage from './components/pages/AddPage';
-import SignUpPage from './components/pages/SignUpPage';
-import SignInPage from './components/pages/SignInPage';
-// import TrassaPage from './components/pages/TrassaPage';
-import ProtectedRouter from '../src/HOCs/ProtectedRouter';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import LoginForm from './components/ui/LoginForm';
+import RegisterForm from './components/ui/RegisterForm';
+import ProtectedRouter from './HOCs/ProtectedRouter';
+import NotFoundPage from './components/pages/NotFoundPage';
 import useUser from './hooks/useUser';
+import AddPage from './components/pages/AddPage';
+import { useState } from 'react';
 import StartPage from './components/pages/StartPage';
 
 function App() {
-  const { logoutHandler, signInHandler, signUpHandler, user } = useUser();
+  const { user, loginHandler, logoutHandler, registerHandler } = useUser();
+  const [activeItem, setActiveItem] = useState('Книги');
+
+  const handleItemClick = (name) => {
+    setActiveItem(name);
+  };
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout user={user} logoutHandler={logoutHandler} />,
+      element: (
+        <Layout
+          logoutHandler={logoutHandler}
+          user={user}
+          handleItemClick={handleItemClick}
+          activeItem={activeItem}
+        />
+      ),
       children: [
-       
         {
           path: '/',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logged'} redirect="/auth/signin">
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
               <StartPage user={user} />
             </ProtectedRouter>
           ),
         },
+
         {
-          path: '/add',
+          path: '/addTrassa',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logged'} redirect="/auth/signin">
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
               <AddPage user={user} />
             </ProtectedRouter>
           ),
         },
         {
-          element: <ProtectedRouter isAllowed={user.status === 'logged'} redirect={'/'} />,
+          element: (
+            <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/'} />
+          ),
           children: [
             {
-              path: '/auth/signup',
-              element: <SignUpPage signUpHandler={signUpHandler} />,
+              path: '/signin',
+              element: <LoginForm loginHandler={loginHandler} />,
             },
             {
-              path: '/auth/signin',
-              element: <SignInPage signInHandler={signInHandler} />,
+              path: '/signup',
+              element: <RegisterForm registerHandler={registerHandler} />,
             },
           ],
+        },
+        {
+          path: '*',
+          element: (
+            <NotFoundPage handleItemClick={handleItemClick} activeItem={activeItem} />
+          ),
         },
       ],
     },
   ]);
+
   return <RouterProvider router={router} />;
 }
-
 export default App;
