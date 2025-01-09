@@ -12,31 +12,11 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         />
         SKI
       </Menu.Item>
-      <MenuItem
-        as={Link}
-        to="/"
-        name="Home"
-        active={activeItem === 'Home'}
-        onClick={() => handleItemClick('Home')}
-      />
-      <MenuItem
-        as={Link}
-        to="/redaction"
-        name="Редактировать трассу"
-        active={activeItem === 'Редактировать трассу'}
-        onClick={() => handleItemClick('Редактировать трассу')}
-      />
-      <MenuItem
-        as={Link}
-        to="/addtrassa"
-        name="Добавить трассу"
-        active={activeItem === 'Добавить трассу'}
-        onClick={() => handleItemClick('Добавить трассу')}
-      />
-      {/* {user.data && (
+
+      {user.data && (
         <MenuItem
           as={Link}
-          to="/home"
+          to="/"
           name="Home"
           active={activeItem === 'Home'}
           onClick={() => handleItemClick('Home')}
@@ -47,7 +27,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         {!user.data && (
           <MenuItem
             as={Link}
-            to="/signin"
+            to="/auth/signin"
             name="Вход"
             active={activeItem === 'Вход'}
             onClick={() => handleItemClick('Вход')}
@@ -56,7 +36,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         {!user.data && (
           <MenuItem
             as={Link}
-            to="/signup"
+            to="/auth/signup"
             name="Регистрация"
             active={activeItem === 'Регистрация'}
             onClick={() => handleItemClick('Регистрация')}
@@ -81,7 +61,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
             <MenuItem name="Выход" onClick={logoutHandler} />
           </>
         )}
-      </Menu.Menu> */}
+      </Menu.Menu>
     </Menu>
   );
 }

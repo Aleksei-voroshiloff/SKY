@@ -1,5 +1,6 @@
 import React from 'react';
 import AddUi from '../ui/AddUi';
+import axiosInstance from '../../api/axiosInstance';
 
 export default function AddPage() {
   const submitHandler = async (e) => {

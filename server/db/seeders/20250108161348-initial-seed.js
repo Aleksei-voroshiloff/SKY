@@ -2,9 +2,10 @@
 
 'use strict';
 
-const bcrypt = require('bcrypt');
+
 
 /** @type {import('sequelize-cli').Migration} */
+const bcrypt = require('bcrypt');
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert(
