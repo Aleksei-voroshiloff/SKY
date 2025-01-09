@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 
 export default function NavBar({ logoutHandler, user, handleItemClick, activeItem }) {
   return (
-    <Menu pointing inverted>
-     
+    <Menu pointing>
+      <Menu.Item header>
+        <img
+          src="/logo.svg" // Укажите путь к вашему логотипу
+          style={{ height: '40px', marginRight: '10px' }} // Установите нужные стили
+        />
+        SKI
+      </Menu.Item>
+
       {user.data && (
         <MenuItem
           as={Link}
@@ -20,7 +27,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         {!user.data && (
           <MenuItem
             as={Link}
-            to="/signin"
+            to="/auth/signin"
             name="Вход"
             active={activeItem === 'Вход'}
             onClick={() => handleItemClick('Вход')}
@@ -29,7 +36,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         {!user.data && (
           <MenuItem
             as={Link}
-            to="/signup"
+            to="/auth/signup"
             name="Регистрация"
             active={activeItem === 'Регистрация'}
             onClick={() => handleItemClick('Регистрация')}
