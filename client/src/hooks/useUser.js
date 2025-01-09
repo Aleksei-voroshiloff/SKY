@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import axiosInstance, { setAccessToken } from '../api/axiosInstance';
 
-export default function useUser() {
-  const [user, setUser] = useState({ status: 'fetching', data: null });
+const useUser = () => {
+  const [user, setUser] = useState({ status: 'logging' });
+
   useEffect(() => {
     axiosInstance('/tokens/refresh')
       .then(({ data }) => {
@@ -16,37 +17,35 @@ export default function useUser() {
         setAccessToken('');
       });
   }, []);
-  const logoutHandler = () => {
+
+  function registerHandler(data) {
+    axiosInstance
+      .post('/auth/register', data)
+      .then(({ data }) => {
+        setUser({ status: 'logged', data: data.user });
+        setAccessToken(data.accessToken);
+      })
+      .catch((error) => alert(error));
+  }
+
+  function loginHandler(data) {
+    axiosInstance.post('/auth/login', data).then(({ data }) => {
+      setUser({ status: 'logged', data: data.user });
+      setAccessToken(data.accessToken);
+    });
+  }
+
+  function logoutHandler() {
     axiosInstance
       .get('/auth/logout')
       .then(() => setUser({ status: 'guest', data: null }));
-    setAccessToken('');
-  };
-  const signUpHandler = (el) => {
-    el.preventDefault();
-    const formData = Object.fromEntries(new FormData(el.target));
-    if (!formData.email || !formData.password || !formData.name) {
-      return alert('Missing required fields');
-    }
-    axiosInstance.post('/auth/signup', formData).then(({ data }) => {
-      setUser({ status: 'logged', data: data.user });
-    });
-  };
-
-  const signInHandler = (el) => {
-    el.preventDefault();
-    const formData = Object.fromEntries(new FormData(el.target));
-    if (!formData.email || !formData.password) {
-      return alert('Missing required fields');
-    }
-    axiosInstance.post('/auth/signin', formData).then(({ data }) => {
-      setUser({ status: 'logged', data: data.user });
-    });
-  };
+  }
   return {
     user,
-    signInHandler,
-    signUpHandler,
+    registerHandler,
+    loginHandler,
     logoutHandler,
   };
-}
+};
+
+export default useUser;
