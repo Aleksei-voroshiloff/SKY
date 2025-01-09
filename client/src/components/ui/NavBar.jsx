@@ -16,7 +16,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
       {user.data && (
         <MenuItem
           as={Link}
-          to="/home"
+          to="/"
           name="Home"
           active={activeItem === 'Home'}
           onClick={() => handleItemClick('Home')}

@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@pbe/react-yandex-maps": "^1.2.5",
     "@vitejs/plugin-react": "^4.3.4",
+    "@yandex/ymaps3-types": "^1.0.15542062",
     "axios": "^1.7.9",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",

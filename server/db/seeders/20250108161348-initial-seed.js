@@ -1,4 +1,8 @@
+/* eslint-disable no-unused-vars */
+
 'use strict';
+
+
 
 /** @type {import('sequelize-cli').Migration} */
 const bcrypt = require('bcrypt');
@@ -8,22 +12,21 @@ module.exports = {
       'Users',
       [
         {
-          name: 'Иван Иванов',
-          email: 'ivan@example.com',
-          password: await bcrypt.hash('123', 10),
+          name: 'admin',
+          email: 'admin@admin.com',
+          password: bcrypt.hashSync('admin111!', 10),
           role: true,
         },
         {
           name: 'Мария Петрова',
-          email: 'maria@example.com',
-          password: await bcrypt.hash('123', 10),
-
+          email: 'aa@aa.com',
+          password: bcrypt.hashSync('123aaA!', 10),
           role: false,
         },
         {
           name: 'Алексей Смирнов',
-          email: 'alexey@example.com',
-          password: await bcrypt.hash('123', 10),
+          email: 'ss@ss.com',
+          password: bcrypt.hashSync('123ssS!', 10),
           role: false,
         },
       ],
@@ -36,29 +39,25 @@ module.exports = {
           title: 'Лыжная трасса в Лысых Горах',
           address: 'Лысые Горы, Нижегородская область',
           description: 'Разнообразные маршруты для лыжников разного уровня подготовки.',
+          coordinate: [56.196208, 43.842068],
           image: 'url_to_image_lysyye_gory.jpg',
-          userId: 2, 
+          userId: 1,
         },
         {
           title: 'Лыжная трасса в Сосновом Бору',
           address: 'Сосновый Бор, Нижегородская область',
           description: 'Трасса окружена живописными сосновыми лесами.',
+          coordinate: [56.182033, 43.43544],
           image: 'url_to_image_sosnovy_bor.jpg',
-          userId: 2,
+          userId: 1,
         },
         {
           title: 'Лыжная трасса на Воскресенских холмах',
           address: 'Воскресенские холмы, Нижегородская область',
           description: 'Известна своими крутыми спусками и подъемами.',
+          coordinate: [56.358778, 44.210468],
           image: 'url_to_image_voskresenskie_kholmy.jpg',
-          userId: 3,
-        },
-        {
-          title: 'Лыжная трасса в Гороховце',
-          address: 'Гороховец, Нижегородская область',
-          description: 'Хорошо подготовленные трассы и комфортные условия для отдыха.',
-          image: 'url_to_image_gorokhovets.jpg',
-          userId: 3,
+          userId: 1,
         },
       ],
       {},
@@ -68,8 +67,8 @@ module.exports = {
       [
         {
           text: 'Отличная трасса! Очень понравилось кататься по разнообразным маршрутам. Особенно рекомендую начинающим лыжникам, так как есть много легких участков. Сервис на высоте, есть возможность проката оборудования.',
-          userId: 3, 
-          trassaId: 1, 
+          userId: 3,
+          trassaId: 1,
         },
         {
           text: 'Мне не понравилось. Трасса была слишком короткой и скучной. Не хватало сложных участков, чтобы сделать катание более интересным. В следующий раз выберу что-то другое.',
@@ -89,7 +88,7 @@ module.exports = {
         {
           text: 'Прекрасное место для семейного отдыха. Трасса хорошо подготовлена, есть места для отдыха и кафе. Дети были в восторге, мы провели отличный день на свежем воздухе!',
           userId: 2,
-          trassaId: 4,
+          trassaId: 2,
         },
       ],
       {},
@@ -97,11 +96,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('Trassas', null, {});
+    await queryInterface.bulkDelete('Comments', null, {});
   },
 };
