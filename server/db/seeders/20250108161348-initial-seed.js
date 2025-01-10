@@ -46,7 +46,7 @@ module.exports = {
           address: 'Сосновый Бор, Нижегородская область',
           description: 'Трасса окружена живописными сосновыми лесами.',
           coordinate: '56.182033 43.43544',
-          image: 'склон.jpg',
+          image: 'sklon.jpg',
           userId: 1,
         },
         {
@@ -54,7 +54,7 @@ module.exports = {
           address: 'Воскресенские холмы, Нижегородская область',
           description: 'Известна своими крутыми спусками и подъемами.',
           coordinate: '56.358778 44.210468',
-          image: 'склон.jpg',
+          image: 'sklon.jpg',
           userId: 1,
         },
       ],
