@@ -58,7 +58,7 @@ export default function StartUi({ coordinates, trassas, points }) {
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={`http://localhost:3000/${hoveredLocation.image}`}
+          image={`https://localhost:3000/${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,
