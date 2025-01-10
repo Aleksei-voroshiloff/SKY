@@ -8,7 +8,6 @@ import useUser from './hooks/useUser';
 import AddPage from './components/pages/AddPage';
 import { useState } from 'react';
 import StartPage from './components/pages/StartPage';
-import EditPage from './components/pages/EditPage';
 import RedactionPage from './components/pages/RedactionPage';
 import InfoPage from './components/pages/InfoPage';
 
@@ -41,7 +40,7 @@ function App() {
           ),
         },
         {
-          path: '/info',
+          path: '/info/:id',
           element: (
             <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
               <InfoPage user={user} />
@@ -58,24 +57,14 @@ function App() {
           ),
         },
         {
-          path: '/trassa/:id',
-          element: (
-            <ProtectedRouter
-              isAllowed={user.status === 'guest'}
-              redirectTo={'/signin'}
-            >
-              <EditPage user={user} />
-            </ProtectedRouter>
-          ),
-        },
-        {
           path: '/redaction',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/home'}>
               <RedactionPage user={user} />
             </ProtectedRouter>
           ),
         },
+
         {
           element: (
             <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/home'} />

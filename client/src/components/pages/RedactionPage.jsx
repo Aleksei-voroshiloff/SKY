@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unknown-property */
 import { useEffect } from 'react';
 import RedactionTrassa from '../ui/RedactionUi';
 import { useTrassaStore } from '../../zustand/trassaStore';
 import { Container, Spinner } from 'react-bootstrap';
 
-export default function RedactionPage({ user }) {
+export default function RedactionPage() {
   const trassas = useTrassaStore((store) => store.trassas);
   const load = useTrassaStore((load) => load.trassasLoading);
   const getTrassas = useTrassaStore((store) => store.getTrassas);
@@ -22,13 +23,11 @@ export default function RedactionPage({ user }) {
     );
   }
 
-  const startUpdate = (upTrassa) => {
-    (prev) => prev.map((el) => (el.id === upTrassa ? upTrassa : el));
-  };
-
   return (
     <div className="mt-4">
-      <h2 className="text-center mb-4">Редактирование Трасс</h2>
+      <h2 className="text-center mb-4" style={{ fontFamily: 'Montserrat Alternates' }}>
+        Редактирование Трасс
+      </h2>
       <div
         style={{
           display: 'flex',
@@ -39,7 +38,7 @@ export default function RedactionPage({ user }) {
       >
         {trassas.map((trassa) => (
           <div key={trassa.id} xs={12} sm={6} md={4} lg={3} className="me-3">
-            <RedactionTrassa startUpdate={startUpdate} trassa={trassa} />
+            <RedactionTrassa trassa={trassa} />
           </div>
         ))}
       </div>

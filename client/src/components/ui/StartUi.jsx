@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
 
@@ -16,7 +17,7 @@ export default function StartUi({ coordinates, trassas, points }) {
 
   const handleLocationClick = (location) => {
     // Переход на страницу локации
-    window.location.href = `/location/${location.title.replace(/\s/g, '-')}`;
+    window.location.href = `/info/${hoveredLocation.id}`;
   };
 
   return (
@@ -32,13 +33,14 @@ export default function StartUi({ coordinates, trassas, points }) {
         position: 'absolute',
       }}
     >
-  <YMaps>
+      <YMaps>
         <Map
           defaultState={{ center: coordinates, zoom: 9 }}
           style={{ width: '100%', height: '400px' }}
         >
           {points.map((point, ind) => {
-            const trassa = trassas[ind]; 
+            const trassa = trassas[ind];
+            console.log(trassas);
             return (
               <Placemark
                 key={ind}
@@ -46,7 +48,7 @@ export default function StartUi({ coordinates, trassas, points }) {
                 options={{
                   preset: 'islands#redIcon',
                 }}
-                onMouseEnter={() => handleMouseEnter(trassa)} 
+                onMouseEnter={() => handleMouseEnter(trassa)}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleLocationClick(trassa)} // Передаем объект trassa
               />
@@ -57,12 +59,12 @@ export default function StartUi({ coordinates, trassas, points }) {
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={`http://localhost:3000${hoveredLocation.image}`}
+          image={`http://localhost:3000/${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,
-            left: `${(hoveredLocation.coordinate[0] - coordinates[0]) * 1000}px`, 
-            top: `${(hoveredLocation.coordinate[1] - coordinates[1]) * 1000}px`, 
+            left: `${(hoveredLocation.coordinate[0] - coordinates[0]) * 1000}px`,
+            top: `${(hoveredLocation.coordinate[1] - coordinates[1]) * 1000}px`,
           }}
         />
       )}
