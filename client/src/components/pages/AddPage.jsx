@@ -22,14 +22,27 @@ export default function AddPage() {
         return;
       }
 
+      // Приведение координат к нужному формату
+      const regex = /^(-?\d+\.\d+)\s+(-?\d+\.\d+)$/;
+      const match = coordinate.trim().match(regex);
+
+      if (!match) {
+        alert(`Неверный формат координат. 
+        Используйте: "56.373123 43.978368"`);
+        return;
+      }
+
+      // Присвоение отформатированных координат
+      const formattedCoordinates = `${match[1]} ${match[2]}`;
+      newTrassa.set('coordinate', formattedCoordinates);
+
       const res = await axiosInstance.post('/trassa', newTrassa);
       if (res.status === 200) {
         e.target.reset();
         navigate('/home');
       }
     } catch (error) {
-      console.log(`Ошибка при добавлении записи: 
-             ${error}`);
+      console.log(`Ошибка при добавлении записи: ${error}`);
     }
   };
 
