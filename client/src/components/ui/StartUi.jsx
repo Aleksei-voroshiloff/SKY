@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
 
-export default function StartUi({ coordinates, trassas }) {
+export default function StartUi({ coordinates, trassas, points }) {
   const [hoveredLocation, setHoveredLocation] = useState(null);
 
   const handleMouseEnter = (location) => {
@@ -24,46 +24,45 @@ export default function StartUi({ coordinates, trassas }) {
       style={{
         width: '95%',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        // justifyContent: 'center',
+        // alignItems: 'center',
         border: 'solid 1px blue',
         borderRadius: '15px',
         overflow: 'hidden',
-        position: 'relative', // Убедитесь, что родительский элемент имеет относительное позиционирование
+        position: 'absolute',
       }}
     >
-      <YMaps>
+  <YMaps>
         <Map
           defaultState={{ center: coordinates, zoom: 9 }}
           style={{ width: '100%', height: '400px' }}
         >
-          {trassas.map((trassa, ind) => (
-            <Placemark
-              key={ind}
-              geometry={trassa.coordinate}
-              // properties={{
-              //   // balloonContent: `Трасса: ${trassa.title}`,
-              // }}
-              options={{
-                preset: 'islands#redIcon', // Установка красного цвета маркера
-              }}
-              onMouseEnter={() => handleMouseEnter(trassa)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleLocationClick(trassa)}
-            />
-          ))}
+          {points.map((point, ind) => {
+            const trassa = trassas[ind]; 
+            return (
+              <Placemark
+                key={ind}
+                geometry={point}
+                options={{
+                  preset: 'islands#redIcon',
+                }}
+                onMouseEnter={() => handleMouseEnter(trassa)} 
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleLocationClick(trassa)} // Передаем объект trassa
+              />
+            );
+          })}
         </Map>
       </YMaps>
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={hoveredLocation.image}
+          image={`http://localhost:3000${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,
             left: `${(hoveredLocation.coordinate[0] - coordinates[0]) * 1000}px`, 
             top: `${(hoveredLocation.coordinate[1] - coordinates[1]) * 1000}px`, 
-            transform: 'translate(50%, 100%)', 
           }}
         />
       )}

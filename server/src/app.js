@@ -8,6 +8,7 @@ const trassaRouter = require('./routes/trassaRouter');
 
 app.use(morgan('dev'));
 
+app.use(express.static('public'));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

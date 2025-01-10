@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -37,24 +36,24 @@ module.exports = {
           title: 'Лыжная трасса в Лысых Горах',
           address: 'Лысые Горы, Нижегородская область',
           description: 'Разнообразные маршруты для лыжников разного уровня подготовки.',
-          coordinate: '56.196208, 43.842068',
-          image: 'url_to_image_lysyye_gory.jpg',
+          coordinate: '56.196208 43.842068',
+          image: '/maxresdefault.jpg',
           userId: 1,
         },
         {
           title: 'Лыжная трасса в Сосновом Бору',
           address: 'Сосновый Бор, Нижегородская область',
           description: 'Трасса окружена живописными сосновыми лесами.',
-          coordinate: '56.182033, 43.43544',
-          image: 'url_to_image_sosnovy_bor.jpg',
+          coordinate: '56.182033 43.43544',
+          image: '/lWqYKEFOq2w.jpg',
           userId: 1,
         },
         {
           title: 'Лыжная трасса на Воскресенских холмах',
           address: 'Воскресенские холмы, Нижегородская область',
           description: 'Известна своими крутыми спусками и подъемами.',
-          coordinate: '56.358778, 44.210468',
-          image: 'url_to_image_voskresenskie_kholmy.jpg',
+          coordinate: '56.358778 44.210468',
+          image: '/TruZHnMJNEs.webp',
           userId: 1,
         },
       ],
