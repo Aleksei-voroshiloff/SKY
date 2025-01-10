@@ -9,7 +9,8 @@ const trassas = [
     address: 'Лысые Горы, Нижегородская область',
     description: 'Разнообразные маршруты для лыжников разного уровня подготовки.',
     coordinate: [56.196208, 43.842068],
-    image: 'url_to_image_lysyye_gory.jpg',
+    image:
+      'https://i.ytimg.com/vi/XdQ7A39zNL4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGEEgSihyMA8=&rs=AOn4CLCqEGL5acJ2pWXfqBdK2KTw9ceCVA',
     userId: 1,
   },
   {
@@ -17,7 +18,8 @@ const trassas = [
     address: 'Сосновый Бор, Нижегородская область',
     description: 'Трасса окружена живописными сосновыми лесами.',
     coordinate: [56.182033, 43.43544],
-    image: 'url_to_image_sosnovy_bor.jpg',
+    image:
+      'https://avatars.mds.yandex.net/i?id=d81b972deac0ddfb16bdeb4202aa54276b8f9c49-9265564-images-thumbs&n=13',
     userId: 1,
   },
   {
@@ -25,7 +27,8 @@ const trassas = [
     address: 'Воскресенские холмы, Нижегородская область',
     description: 'Известна своими крутыми спусками и подъемами.',
     coordinate: [56.358778, 44.210468],
-    image: 'url_to_image_voskresenskie_kholmy.jpg',
+    image: 'https://krylatskoe.mos.ru/photo_20%D0%B21-01-14_18-41-46.jpg',
+
     userId: 1,
   },
 ];
