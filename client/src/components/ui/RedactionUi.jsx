@@ -18,7 +18,7 @@ function RedactionTrassa({ trassa, startUpdate }) {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={trassa.img}
+            src={`http://localhost:3000/${trassa.image}`}
             style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             className="rounded-start"
           />
@@ -29,7 +29,7 @@ function RedactionTrassa({ trassa, startUpdate }) {
             <p className="card-text text-muted">{trassa.address}</p>
             <p className="card-text">{trassa.description}</p>
             <p className="card-text text-muted">{trassa.coordinate}</p>
-            <div className="d-flex justify-content-between mt-auto">
+            <div className="justify-content-between">
               <Button
                 onClick={() => setShow((prev) => !prev)}
                 variant="primary"
@@ -40,10 +40,8 @@ function RedactionTrassa({ trassa, startUpdate }) {
               <Button variant="danger" onClick={() => handleDelete(trassa.id)}>
                 Удалить
               </Button>
+              {/* <Button>DAdad</Button> */}
             </div>
-            <p className="card-text">
-              <small className="text-body-secondary">Обновлено 3 минуты назад</small>
-            </p>
           </div>
         </div>
         {show && <EditPage trassa={trassa} startUpdate={startUpdate} setShow={setShow} />}
