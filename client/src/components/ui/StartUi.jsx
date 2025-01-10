@@ -40,7 +40,6 @@ export default function StartUi({ coordinates, trassas, points }) {
         >
           {points.map((point, ind) => {
             const trassa = trassas[ind];
-            console.log(trassas);
             return (
               <Placemark
                 key={ind}

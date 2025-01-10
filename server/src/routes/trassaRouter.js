@@ -80,7 +80,6 @@ trassaRouter
   })
   .put(upload.single('file'), async (req, res) => {
     try {
-      console.log(req.file, 234);
       const { id } = req.params;
       const { title, address, description, coordinate } = req.body;
       if (!req.file) {
