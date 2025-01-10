@@ -21,7 +21,7 @@ export default function InfoUi({ trassa }) {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={`https://localhost:3000/${trassa.image}`}
+            src={`/images/${trassa.image}`}
             style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             className="rounded-start"
           />

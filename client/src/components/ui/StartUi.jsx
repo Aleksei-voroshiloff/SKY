@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
@@ -59,7 +60,7 @@ export default function StartUi({ coordinates, trassas, points }) {
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={`postgresql://test_deeploy_user:MHGI8HwFRTNZoEGgoDbsYLUBuCEM5BW8@dpg-cu0jm0hu0jms73d2qh7g-a/test_deeploy/${hoveredLocation.image}`}
+          image={`/images/${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,
