@@ -39,7 +39,7 @@ export default function AddPage() {
       const res = await axiosInstance.post('/trassa', newTrassa);
       if (res.status === 200) {
         e.target.reset();
-        navigate('/home');
+        navigate('/');
       }
     } catch (error) {
       console.log(`Ошибка при добавлении записи: ${error}`);
