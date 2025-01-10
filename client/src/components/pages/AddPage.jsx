@@ -1,7 +1,6 @@
-import React from 'react';
 import AddUi from '../ui/AddUi';
 import axiosInstance from '../../api/axiosInstance';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function AddPage() {
   const navigate = useNavigate();
