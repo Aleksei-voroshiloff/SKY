@@ -59,7 +59,7 @@ export default function StartUi({ coordinates, trassas, points }) {
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={`/images/${hoveredLocation.image}`}
+          image={`https://ski-6p66.onrender.com/${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,
