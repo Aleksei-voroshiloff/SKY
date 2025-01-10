@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
@@ -37,7 +38,7 @@ module.exports = {
           address: 'Лысые Горы, Нижегородская область',
           description: 'Разнообразные маршруты для лыжников разного уровня подготовки.',
           coordinate: '56.196208 43.842068',
-          image: '/maxresdefault.jpg',
+          image: 'maxresdefault.jpg',
           userId: 1,
         },
         {
@@ -45,7 +46,7 @@ module.exports = {
           address: 'Сосновый Бор, Нижегородская область',
           description: 'Трасса окружена живописными сосновыми лесами.',
           coordinate: '56.182033 43.43544',
-          image: '/lWqYKEFOq2w.jpg',
+          image: 'lWqYKEFOq2w.jpg',
           userId: 1,
         },
         {
@@ -53,7 +54,7 @@ module.exports = {
           address: 'Воскресенские холмы, Нижегородская область',
           description: 'Известна своими крутыми спусками и подъемами.',
           coordinate: '56.358778 44.210468',
-          image: '/TruZHnMJNEs.webp',
+          image: 'TruZHnMJNEs.webp',
           userId: 1,
         },
       ],
