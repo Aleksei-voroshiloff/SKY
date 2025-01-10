@@ -4,7 +4,6 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
-import('dotenv').config();
 
 export default function StartUi({ coordinates, trassas, points }) {
   const [hoveredLocation, setHoveredLocation] = useState(null);
