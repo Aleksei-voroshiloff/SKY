@@ -3,7 +3,6 @@ import axios from 'axios';
 import StartUi from '../ui/StartUi';
 import '../css/pages.css';
 
-
 export default function StartPage() {
   const [trassas, setTrassas] = useState([]);
   const [points, setPoints] = useState([]);
@@ -13,10 +12,7 @@ export default function StartPage() {
 
   useEffect(() => {
     axios('api/trassa/coordinate')
-      .then(({ data }) => {
-        setPoints(data);
-        console.log(data);
-      })
+      .then(({ data }) => setPoints(data))
       .catch((error) => console.log(error));
   }, []);
 
@@ -42,19 +38,17 @@ export default function StartPage() {
 
   return (
     <>
-
-        <div className="container">
-          <img src="/gor.jpg" className="image" />
-          <div className="title">
-            <div className="step1">Горнолыжные</div>
-            <div className="step2">Трассы</div>
-            <div className="step3">Нижегородской</div>
-            <div className="step4">Области</div>
-          </div>
+      <div className="container">
+        <img src="/gor.jpg" className="image" />
+        <div className="title">
+          <div className="step1">Горнолыжные</div>
+          <div className="step2">Трассы</div>
+          <div className="step3">Нижегородской</div>
+          <div className="step4">Области</div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <StartUi trassas={trassas} coordinates={coordinates} points={points} />
-
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <StartUi trassas={trassas} coordinates={coordinates} points={points} />
       </div>
     </>
   );

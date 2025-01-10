@@ -9,10 +9,7 @@ export default function InfoPage() {
 
   useEffect(() => {
     axios(`/api/trassa/${id}`)
-      .then(({ data }) => {
-        setTrassas([data]);
-        console.log(data);
-      })
+      .then(({ data }) => setTrassas([data]))
       .catch((error) => console.log(error));
   }, []);
 
