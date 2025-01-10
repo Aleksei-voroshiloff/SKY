@@ -1,27 +1,32 @@
 import React from 'react';
 import AddUi from '../ui/AddUi';
 import axiosInstance from '../../api/axiosInstance';
+import { redirect, useNavigate } from 'react-router-dom';
 
 export default function AddPage() {
+  const navigate = useNavigate();
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const newItem = new FormData(e.target);
+      const newTrassa = new FormData(e.target);
 
-      const title = newItem.get('title');
-      const desc = newItem.get('desc');
-      const file = newItem.get('file');
-      const price = newItem.get('price');
-      const categoryId = newItem.get('categoryId');
+      const title = newTrassa.get('title');
+      const address = newTrassa.get('address');
+      const description = newTrassa.get('description');
+      const coordinate = newTrassa.get('coordinate');
+      const file = newTrassa.get('file');
 
-      if (!title || !desc || !price || !file || !categoryId) {
+      if (!title || !address || !description || !file || !coordinate) {
         alert('Заполните все поля !');
         return;
       }
 
-      await axiosInstance.post('/items', newItem);
-
-      e.target.reset();
+      const res = await axiosInstance.post('/trassa', newTrassa);
+      if (res.status === 200) {
+        e.target.reset();
+        navigate('/home');
+      }
     } catch (error) {
       console.log(`Ошибка при добавлении записи: 
              ${error}`);
