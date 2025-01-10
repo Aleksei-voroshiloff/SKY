@@ -21,7 +21,6 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: '/',
       element: (
         <Layout
           logoutHandler={logoutHandler}
@@ -32,7 +31,7 @@ function App() {
       ),
       children: [
         {
-          path: '/home',
+          path: '/',
           element: (
             <ProtectedRouter>
               <StartPage user={user} />
@@ -42,7 +41,7 @@ function App() {
         {
           path: '/info/:id',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
+            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/'}>
               <InfoPage user={user} />
             </ProtectedRouter>
           ),
@@ -51,7 +50,7 @@ function App() {
         {
           path: '/addTrassa',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/home'}>
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/'}>
               <AddPage user={user} />
             </ProtectedRouter>
           ),
@@ -59,7 +58,7 @@ function App() {
         {
           path: '/redaction',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/home'}>
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/'}>
               <RedactionPage user={user} />
             </ProtectedRouter>
           ),
@@ -67,7 +66,7 @@ function App() {
 
         {
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/home'} />
+            <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/'} />
           ),
           children: [
             {

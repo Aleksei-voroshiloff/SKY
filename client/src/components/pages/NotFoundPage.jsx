@@ -10,7 +10,7 @@ function NotFoundPage(handleItemClick) {
         onClick={() => handleItemClick('Home')}
         as={Link}
         variant="primary"
-        to="/home"
+        to="/"
       >
         Вернуться на главную
       </Button>
