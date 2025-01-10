@@ -8,10 +8,12 @@ import useUser from './hooks/useUser';
 import AddPage from './components/pages/AddPage';
 import { useState } from 'react';
 import StartPage from './components/pages/StartPage';
+import EditPage from './components/pages/EditPage';
+import RedactionPage from './components/pages/RedactionPage';
 
 function App() {
   const { user, loginHandler, logoutHandler, registerHandler } = useUser();
-  const [activeItem, setActiveItem] = useState('Книги');
+  const [activeItem, setActiveItem] = useState('Home');
 
   const handleItemClick = (name) => {
     setActiveItem(name);
@@ -43,6 +45,25 @@ function App() {
           element: (
             <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/home'}>
               <AddPage user={user} />
+            </ProtectedRouter>
+          ),
+        },
+        {
+          path: '/trassa/:id',
+          element: (
+            <ProtectedRouter
+              isAllowed={user.status === 'guest'}
+              redirectTo={'/signin'}
+            >
+              <EditPage user={user} />
+            </ProtectedRouter>
+          ),
+        },
+        {
+          path: '/redaction',
+          element: (
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
+              <RedactionPage user={user} />
             </ProtectedRouter>
           ),
         },
