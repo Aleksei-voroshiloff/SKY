@@ -10,6 +10,7 @@ import { useState } from 'react';
 import StartPage from './components/pages/StartPage';
 import EditPage from './components/pages/EditPage';
 import RedactionPage from './components/pages/RedactionPage';
+import InfoPage from './components/pages/InfoPage';
 
 function App() {
   const { user, loginHandler, logoutHandler, registerHandler } = useUser();
@@ -34,8 +35,16 @@ function App() {
         {
           path: '/home',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
+            <ProtectedRouter>
               <StartPage user={user} />
+            </ProtectedRouter>
+          ),
+        },
+        {
+          path: '/info',
+          element: (
+            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
+              <InfoPage user={user} />
             </ProtectedRouter>
           ),
         },

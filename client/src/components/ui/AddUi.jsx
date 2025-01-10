@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button, NavLink } from 'react-bootstrap';
+/* eslint-disable react/prop-types */
+
+import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import '../css/pages.css';
 import { Link } from 'react-router-dom';
@@ -23,11 +24,11 @@ export default function AddUi({ submitHandler }) {
             <Form.Control as="textarea" name="description" type="text" />
           </div>
           <div className="input">
-            <Form.Label>Введите координаты трассы</Form.Label>
+            <Form.Label>Введите координаты трассы </Form.Label>
             <Form.Control
               name="coordinate"
               type="text"
-              placeholder="56.182033, 43.43544"
+              placeholder="56.182033 43.43544"
             />
           </div>
           <div className="input">

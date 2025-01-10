@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable consistent-return */
 const express = require('express');
 const trassaRouter = express.Router();
 const { Trassa } = require('../../db/models');
@@ -13,7 +15,6 @@ trassaRouter
       const allTrassas = await Trassa.findAll({
         order: [['id', 'DESC']],
       });
-      console.log(allTrassas);
       return res.json(allTrassas);
     } catch (error) {
       console.log(error);
@@ -38,27 +39,24 @@ trassaRouter
         image: name,
         userId,
       });
-      res.json(newTrassa);
+      res.status(200).json(newTrassa);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Ошибка при добавлении карточки' });
     }
   });
 
-  trassaRouter
-  .route('/coordinate')
-  .get(async (req, res) => {
-    try {
-      const allCoordinate = await Trassa.findAll({
-        where:{}
-      });
-      console.log(allCoordinate);
-      return res.json(allCoordinate);
-    } catch (error) {
-      console.log(error);
-      return res.status(500).json({ message: 'Ошибка при выведении всех trass' });
-    }
-  })
+trassaRouter.route('/coordinate').get(async (req, res) => {
+  try {
+    const allCoordinate = await Trassa.findAll();
+    const arrCor = allCoordinate.map((el) => el.coordinate.split(' '));
+    const result = arrCor.map((el) => el.map((val) => parseFloat(val)));
+    return res.json(result);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Ошибка при выведении всех trass' });
+  }
+});
 trassaRouter
   .route('/:id')
   .get(async (req, res) => {

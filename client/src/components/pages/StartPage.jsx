@@ -3,25 +3,26 @@ import axios from 'axios';
 import StartUi from '../ui/StartUi';
 import '../css/pages.css';
 
+
 export default function StartPage() {
   const [trassas, setTrassas] = useState([]);
-  const [points, setPoints] = useState([])
+  const [points, setPoints] = useState([]);
   const [coordinates, setCoordinates] = useState([]);
   const apiKey = 'fa19c003-7a98-4e3f-9598-f62e8540e58f'; // Замените на ваш API ключ
   const address = 'Нижний Новгород'; // Адрес для геокодирования
 
-  useEffect(()=>{
-    axios('/coordinate')
-    .then(({data})=> setPoints(data))
-    .catch((error)=> console.log(error))
-  },[])
+  useEffect(() => {
+    axios('api/trassa/coordinate')
+      .then(({ data }) => {
+        setPoints(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     axios('/api/trassa')
-      .then(({ data }) => {
-        setTrassas(data);
-        console.log(data);
-      })
+      .then(({ data }) => setTrassas(data))
       .catch((error) => console.log(error));
   }, []);
 
@@ -41,17 +42,19 @@ export default function StartPage() {
 
   return (
     <>
-      <div className="container">
-        <img src="/gor.jpg" className="image" />
-        <div className="title">
-          <div className="step1">Горнолыжные</div>
-          <div className="step2">Трассы</div>
-          <div className="step3">Нижегородской</div>
-          <div className="step4">Области</div>
+
+        <div className="container">
+          <img src="/gor.jpg" className="image" />
+          <div className="title">
+            <div className="step1">Горнолыжные</div>
+            <div className="step2">Трассы</div>
+            <div className="step3">Нижегородской</div>
+            <div className="step4">Области</div>
+          </div>
         </div>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <StartUi trassas={trassas} coordinates={coordinates} points={points}/>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <StartUi trassas={trassas} coordinates={coordinates} points={points} />
+
       </div>
     </>
   );
