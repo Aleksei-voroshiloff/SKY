@@ -19,7 +19,7 @@ function RedactionTrassa({ trassa, startUpdate }) {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={`/images/${trassa.image}`}
+            src={`https://ski-6p66.onrender.com/${trassa.image}`}
             style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             className="rounded-start"
           />
