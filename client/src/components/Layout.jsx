@@ -3,6 +3,7 @@ import NavBar from './ui/NavBar';
 import { Outlet } from 'react-router-dom';
 import { RingLoader } from 'react-spinners';
 
+
 export default function Layout({ logoutHandler, user, handleItemClick, activeItem }) {
   if (user.status === 'logging')
     return (
@@ -11,7 +12,7 @@ export default function Layout({ logoutHandler, user, handleItemClick, activeIte
       </div>
     );
   return (
-    <div>
+    <div style={{ backgroundImage: 'url(/mount.jpg)' , backgroundSize: 'cover', minHeight: '100vh' }}>
       <NavBar
         logoutHandler={logoutHandler}
         user={user}
