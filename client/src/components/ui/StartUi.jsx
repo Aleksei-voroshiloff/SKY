@@ -3,6 +3,7 @@ import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
+import('dotenv').config();
 
 export default function StartUi({ coordinates, trassas, points }) {
   const [hoveredLocation, setHoveredLocation] = useState(null);
@@ -58,7 +59,7 @@ export default function StartUi({ coordinates, trassas, points }) {
       {hoveredLocation && (
         <LocationPopup
           title={hoveredLocation.title}
-          image={`https://localhost:3000/${hoveredLocation.image}`}
+          image={`postgresql://test_deeploy_user:MHGI8HwFRTNZoEGgoDbsYLUBuCEM5BW8@dpg-cu0jm0hu0jms73d2qh7g-a/test_deeploy/${hoveredLocation.image}`}
           style={{
             position: 'absolute',
             zIndex: 1,

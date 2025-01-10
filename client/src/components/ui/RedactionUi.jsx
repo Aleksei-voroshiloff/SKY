@@ -19,7 +19,7 @@ function RedactionTrassa({ trassa, startUpdate }) {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src={`https://localhost:3000/${trassa.image}`}
+            src={`postgresql://test_deeploy_user:MHGI8HwFRTNZoEGgoDbsYLUBuCEM5BW8@dpg-cu0jm0hu0jms73d2qh7g-a/test_deeploy/${trassa.image}`}
             style={{ height: '100%', width: '100%', objectFit: 'cover' }}
             className="rounded-start"
           />
