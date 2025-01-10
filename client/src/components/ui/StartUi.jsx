@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
-export default function StartUi({ coordinates, trassas }) {
+export default function StartUi({ coordinates, trassas, points }) {
   return (
     <div
       style={{
@@ -19,10 +19,10 @@ export default function StartUi({ coordinates, trassas }) {
           defaultState={{ center: coordinates, zoom: 9 }}
           style={{ width: '100%', height: '400px' }}
         >
-          {trassas.map((trassa, ind) => (
+          {points.map((point, ind) => (
             <Placemark
               key={ind}
-              geometry={trassa.coordinate}
+              geometry={point}
               // properties={{
               //   // balloonContent: `Трасса: ${trassa.title}`,
               // }}
