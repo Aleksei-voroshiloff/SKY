@@ -43,7 +43,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
             />
           </>
         )}
-        {user?.data?.name === 'admin' && (
+        {user?.data?.role && (
           <>
             <MenuItem
               as={Link}

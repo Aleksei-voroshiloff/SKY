@@ -39,7 +39,7 @@ trassaRouter
         image: name,
         userId,
       });
-      res.json(newTrassa);
+      res.status(200).json(newTrassa);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: 'Ошибка при добавлении карточки' });

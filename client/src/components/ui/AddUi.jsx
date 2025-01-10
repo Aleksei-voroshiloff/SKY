@@ -1,5 +1,6 @@
-import React from 'react';
-import { Button, NavLink } from 'react-bootstrap';
+/* eslint-disable react/prop-types */
+
+import { Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import '../css/pages.css';
 import { Link } from 'react-router-dom';

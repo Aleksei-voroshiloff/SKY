@@ -8,6 +8,7 @@ import useUser from './hooks/useUser';
 import AddPage from './components/pages/AddPage';
 import { useState } from 'react';
 import StartPage from './components/pages/StartPage';
+import InfoPage from './components/pages/InfoPage';
 
 function App() {
   const { user, loginHandler, logoutHandler, registerHandler } = useUser();
@@ -32,8 +33,16 @@ function App() {
         {
           path: '/home',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
+            <ProtectedRouter>
               <StartPage user={user} />
+            </ProtectedRouter>
+          ),
+        },
+        {
+          path: '/info',
+          element: (
+            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
+              <InfoPage user={user} />
             </ProtectedRouter>
           ),
         },
