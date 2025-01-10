@@ -12,13 +12,11 @@ trassaRouter
   .route('/')
   .get(async (req, res) => {
     try {
-      const allTrassas = await Trassa.findAll({
-        order: [['id', 'DESC']],
-      });
+      const allTrassas = await Trassa.findAll();
       return res.json(allTrassas);
     } catch (error) {
       console.log(error);
-      return res.status(500).json({ message: 'Ошибка при выведении всех trass' });
+      return res.status(500).json({ message: 'Ошибка при выведении всех trass' })
     }
   })
   .post(verifyAccessToken, upload.single('file'), async (req, res) => {
@@ -82,6 +80,7 @@ trassaRouter
   })
   .put(upload.single('file'), async (req, res) => {
     try {
+      console.log(req.file, 234);
       const { id } = req.params;
       const { title, address, description, coordinate } = req.body;
       if (!req.file) {

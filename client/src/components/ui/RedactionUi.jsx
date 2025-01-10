@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useTrassaStore } from '../../zustand/trassaStore';

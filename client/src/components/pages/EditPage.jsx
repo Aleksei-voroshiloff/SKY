@@ -1,4 +1,5 @@
-import { Button, Form, Container, Row, Col } from 'react-bootstrap';
+/* eslint-disable react/prop-types */
+import { Button, Form, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import { useTrassaStore } from '../../zustand/trassaStore';
@@ -6,7 +7,7 @@ export default function EditPage({ trassa, setShow }) {
   const updateTrassa = useTrassaStore((store) => store.updateTrassa);
   const changeHandler = async (e, id) => {
     e.preventDefault();
-    const formData = Object.fromEntries(new FormData(e.target));
+    const formData = new FormData(e.target);
     updateTrassa(id, formData);
     setShow(false);
   };
@@ -18,7 +19,7 @@ export default function EditPage({ trassa, setShow }) {
         onSubmit={(event) => changeHandler(event, trassa.id)}
       >
         <Form.Group controlId="formTitle">
-          <Form.Control name="title" type="text" defaultValue={trassa.title} required />
+          <Form.Control name="title" type="text" defaultValue={trassa.title} />
         </Form.Group>
         <Form.Group controlId="formAddress">
           <Form.Control name="address" type="text" defaultValue={trassa.address} />
@@ -34,7 +35,7 @@ export default function EditPage({ trassa, setShow }) {
           <Form.Control name="coordinate" type="text" defaultValue={trassa.coordinate} />
         </Form.Group>
         <Form.Group controlId="formImage">
-          <Form.Control name="image" type="file" />
+          <Form.Control name="file" type="file" />
         </Form.Group>
         <Button variant="primary" type="submit" className="mt-3">
           Сохранить

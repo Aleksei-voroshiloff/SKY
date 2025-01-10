@@ -22,11 +22,15 @@ export const useTrassaStore = create((set) => ({
       })
       .catch((error) => console.log(error));
   },
-  updateTrassa:(id, updatedTrassa, ) => {
+  updateTrassa:(id, formData) => {
 
-    console.log(updatedTrassa, id);
+    console.log(id, formData);
     axiosInstance
-      .put(`/trassa/${id}`, updatedTrassa)
+      .put(`/trassa/${id}`, formData, {
+       headers: {
+        "Content-Type": "multipart/formdata"
+       }
+      })
       .then(({ data }) => {
         set((state) => ({
           trassas: state.trassas.map((trassa) => (trassa.id === id ? data : trassa)),

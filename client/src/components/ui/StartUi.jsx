@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
 
@@ -16,7 +17,7 @@ export default function StartUi({ coordinates, trassas, points }) {
 
   const handleLocationClick = (location) => {
     // Переход на страницу локации
-    window.location.href = `/location/${location.title.replace(/\s/g, '-')}`;
+    window.location.href = `/info/${hoveredLocation.id}`;
   };
 
   return (
@@ -39,7 +40,7 @@ export default function StartUi({ coordinates, trassas, points }) {
         >
           {points.map((point, ind) => {
             const trassa = trassas[ind];
-            console.log(trassas)
+            console.log(trassas);
             return (
               <Placemark
                 key={ind}
