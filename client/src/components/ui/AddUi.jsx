@@ -23,11 +23,11 @@ export default function AddUi({ submitHandler }) {
             <Form.Control as="textarea" name="description" type="text" />
           </div>
           <div className="input">
-            <Form.Label>Введите координаты трассы</Form.Label>
+            <Form.Label>Введите координаты трассы </Form.Label>
             <Form.Control
               name="coordinate"
               type="text"
-              placeholder="56.182033, 43.43544"
+              placeholder="56.182033 43.43544"
             />
           </div>
           <div className="input">
