@@ -61,9 +61,9 @@ export default function StartUi({ coordinates, trassas }) {
           style={{
             position: 'absolute',
             zIndex: 1,
-            left: `${(hoveredLocation.coordinate[0] - coordinates[0]) * 1000}px`, // Умножаем на 1000 для правильного позиционирования
-            top: `${(hoveredLocation.coordinate[1] - coordinates[1]) * 1000}px`, // Умножаем на 1000 для правильного позиционирования
-            transform: 'translate(50%, 100%)', // Центрируем всплывающее окно относительно точки
+            left: `${(hoveredLocation.coordinate[0] - coordinates[0]) * 1000}px`, 
+            top: `${(hoveredLocation.coordinate[1] - coordinates[1]) * 1000}px`, 
+            transform: 'translate(50%, 100%)', 
           }}
         />
       )}
