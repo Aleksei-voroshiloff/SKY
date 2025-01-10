@@ -30,9 +30,9 @@ function App() {
       ),
       children: [
         {
-          path: '/',
+          path: '/home',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
+            <ProtectedRouter isAllowed={user.status === 'logging'} redirectTo={'/home'}>
               <StartPage user={user} />
             </ProtectedRouter>
           ),
@@ -41,14 +41,14 @@ function App() {
         {
           path: '/addTrassa',
           element: (
-            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/signin'}>
+            <ProtectedRouter isAllowed={user.status === 'guest'} redirectTo={'/home'}>
               <AddPage user={user} />
             </ProtectedRouter>
           ),
         },
         {
           element: (
-            <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/'} />
+            <ProtectedRouter isAllowed={user.status === 'logged'} redirectTo={'/home'} />
           ),
           children: [
             {

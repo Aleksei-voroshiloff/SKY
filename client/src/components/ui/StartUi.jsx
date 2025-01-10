@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LocationPopup from './LocationPopup';
 import '../css/pages.css';
 
-export default function StartUi({ coordinates, trassas = [] }) {
+export default function StartUi({ coordinates, trassas }) {
   const [hoveredLocation, setHoveredLocation] = useState(null);
 
   const handleMouseEnter = (location) => {
@@ -41,9 +41,9 @@ export default function StartUi({ coordinates, trassas = [] }) {
             <Placemark
               key={ind}
               geometry={trassa.coordinate}
-              properties={{
-                balloonContent: `Трасса: ${trassa.title}`,
-              }}
+              // properties={{
+              //   // balloonContent: `Трасса: ${trassa.title}`,
+              // }}
               options={{
                 preset: 'islands#redIcon', // Установка красного цвета маркера
               }}
