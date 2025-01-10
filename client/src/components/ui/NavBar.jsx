@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Menu, MenuItem } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import Snowfall from '../../components/ui/Snowfall'
+
+
 
 export default function NavBar({ logoutHandler, user, handleItemClick, activeItem }) {
   return (
@@ -12,7 +15,7 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         />
         SKI
       </Menu.Item>
-
+      <Snowfall /> 
       <MenuItem
         as={Link}
         to="/home"
