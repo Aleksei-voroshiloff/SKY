@@ -1,0 +1,41 @@
+import axiosInstance from '../api/axiosInstance';
+import { create } from 'zustand';
+export const useTrassaStore = create((set) => ({
+  bears: 0,
+  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+  removeAllBears: () => set({ bears: 0 }),
+  updateBears: (newBears) => set({ bears: newBears }),
+  trassas: [],
+  getTrassas: (url) => {
+    axiosInstance(url)
+      .then(({ data }) => {
+        set({ trassas: data });
+      })
+      .catch((error) => console.log(error))
+      .finally(() => set({ trassasLoading: false }));
+  },
+  deleteTrassa: (id) => {
+    axiosInstance
+      .delete(`/trassa/${id}`)
+      .then(({ data }) => {
+        set((state) => ({ trassas: state.trassas.filter((trassa) => trassa.id !== id) }));
+      })
+      .catch((error) => console.log(error));
+  },
+  updateTrassa:(id, formData) => {
+
+    console.log(id, formData);
+    axiosInstance
+      .put(`/trassa/${id}`, formData, {
+       headers: {
+        "Content-Type": "multipart/formdata"
+       }
+      })
+      .then(({ data }) => {
+        set((state) => ({
+          trassas: state.trassas.map((trassa) => (trassa.id === id ? data : trassa)),
+        }));
+      })
+      .catch((error) => console.log(error));
+  },
+}));

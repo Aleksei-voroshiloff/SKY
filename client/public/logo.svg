@@ -1,0 +1,36 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  width="200"
+  height="200"
+>
+  <rect width="100%" height="100%" fill="#cceeff" />
+  
+  <!-- Снег -->
+  <path
+    d="M0 160 Q50 130 100 160 T200 160 V200 H0 Z"
+    fill="#ffffff"
+  />
+  
+  <!-- Реалистичные горы -->
+  <path
+    d="M30 150 L85 60 L140 150 Z"
+    fill="#0055a0"
+  />
+  <path
+    d="M85 150 L120 80 L160 150 Z"
+    fill="#0077cc"
+  />
+  <path
+    d="M75 80 L100 50 L125 80 Z"
+    fill="#ffffff"
+  />
+  
+  <!-- Лыжи с более реалистичной формой -->
+  <path d="M70 140 L75 180 L65 180 Z" fill="#ff0000" />
+  <path d="M125 140 L130 180 L120 180 Z" fill="#ff0000" />
+  
+  <!-- Лыжные крепления -->
+  <circle cx="72.5" cy="140" r="3" fill="#000000" />
+  <circle cx="127.5" cy="140" r="3" fill="#000000" />
+</svg>
