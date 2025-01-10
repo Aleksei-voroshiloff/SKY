@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 
-export default function StartUi({ coordinates, trassas = [] }) {
+export default function StartUi({ coordinates, trassas }) {
   return (
     <div
       style={{
@@ -23,9 +23,9 @@ export default function StartUi({ coordinates, trassas = [] }) {
             <Placemark
               key={ind}
               geometry={trassa.coordinate}
-              properties={{
-                balloonContent: `Трасса: ${trassa.title}`,
-              }}
+              // properties={{
+              //   // balloonContent: `Трасса: ${trassa.title}`,
+              // }}
               options={{
                 preset: 'islands#redIcon', // Установка красного цвета маркера
               }}

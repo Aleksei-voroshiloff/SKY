@@ -3,44 +3,27 @@ import axios from 'axios';
 import StartUi from '../ui/StartUi';
 import '../css/pages.css';
 
-const trassas = [
-  {
-    title: 'Лыжная трасса в Лысых Горах',
-    address: 'Лысые Горы, Нижегородская область',
-    description: 'Разнообразные маршруты для лыжников разного уровня подготовки.',
-    coordinate: [56.196208, 43.842068],
-    image: 'url_to_image_lysyye_gory.jpg',
-    userId: 1,
-  },
-  {
-    title: 'Лыжная трасса в Сосновом Бору',
-    address: 'Сосновый Бор, Нижегородская область',
-    description: 'Трасса окружена живописными сосновыми лесами.',
-    coordinate: [56.182033, 43.43544],
-    image: 'url_to_image_sosnovy_bor.jpg',
-    userId: 1,
-  },
-  {
-    title: 'Лыжная трасса на Воскресенских холмах',
-    address: 'Воскресенские холмы, Нижегородская область',
-    description: 'Известна своими крутыми спусками и подъемами.',
-    coordinate: [56.358778, 44.210468],
-    image: 'url_to_image_voskresenskie_kholmy.jpg',
-    userId: 1,
-  },
-];
-
 export default function StartPage() {
-  // const [trassas, setTrassas] = useState([]);
+  const [trassas, setTrassas] = useState([]);
+  const [points, setPoints] = useState([])
   const [coordinates, setCoordinates] = useState([]);
   const apiKey = 'fa19c003-7a98-4e3f-9598-f62e8540e58f'; // Замените на ваш API ключ
   const address = 'Нижний Новгород'; // Адрес для геокодирования
 
-  // useEffect(() => {
-  //   axios('/api/trassa')
-  //     .then(({ data }) => setTrassas(data))
-  //     .catch((error) => console.log(error));
-  // }, []);
+  useEffect(()=>{
+    axios('/coordinate')
+    .then(({data})=> setPoints(data))
+    .catch((error)=> console.log(error))
+  },[])
+
+  useEffect(() => {
+    axios('/api/trassa')
+      .then(({ data }) => {
+        setTrassas(data);
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     axios(
@@ -68,7 +51,7 @@ export default function StartPage() {
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <StartUi trassas={trassas} tra coordinates={coordinates} />
+        <StartUi trassas={trassas} coordinates={coordinates} points={points}/>
       </div>
     </>
   );
