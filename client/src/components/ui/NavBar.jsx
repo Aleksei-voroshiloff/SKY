@@ -3,7 +3,6 @@ import { Menu, MenuItem } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar({ logoutHandler, user, handleItemClick, activeItem }) {
-  console.log(user);
   return (
     <Menu pointing>
       <Menu.Item header>
@@ -14,15 +13,13 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
         SKI
       </Menu.Item>
 
-      {user.data && (
-        <MenuItem
-          as={Link}
-          to="/"
-          name="Home"
-          active={activeItem === 'Home'}
-          onClick={() => handleItemClick('Home')}
-        />
-      )}
+      <MenuItem
+        as={Link}
+        to="/home"
+        name="Home"
+        active={activeItem === 'Home'}
+        onClick={() => handleItemClick('Home')}
+      />
 
       <Menu.Menu position="right">
         {!user.data && (
@@ -61,12 +58,12 @@ export default function NavBar({ logoutHandler, user, handleItemClick, activeIte
             />
           </>
         )}
-       {user.data &&
-       <>
-         <MenuItem name={user.data.name}  />
-        <MenuItem name="Выход" onClick={logoutHandler} />
-       </>
-        }
+        {user.data && (
+          <>
+            <MenuItem name={user.data.name} />
+            <MenuItem name="Выход" onClick={logoutHandler} />
+          </>
+        )}
       </Menu.Menu>
     </Menu>
   );
